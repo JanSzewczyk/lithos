@@ -1,173 +1,83 @@
 import { expect, test } from "@playwright/test";
-import {
-  FEATURE_TITLES,
-  QUICK_START_STEPS,
-  SCRIPTS,
-  SZUM_TECH_PACKAGE_COUNT,
-  SZUM_TECH_PACKAGES,
-  TECH_STACK_CATEGORIES,
-  TECH_STACK_COUNT,
-  TECH_STACK_ITEMS
-} from "~/constants";
 
 test("has title", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page).toHaveTitle(/Szumplate Next App/);
+  await expect(page).toHaveTitle(/Lithos/);
 });
 
-test("has hero section content", async ({ page }) => {
+test("has nav", async ({ page }) => {
   await page.goto("/");
 
-  // Main heading - h1 contains span with "Szum-Tech" and text "Next.js Template"
+  const nav = page.getByRole("navigation");
+  await expect(nav.getByText("Lithos")).toBeVisible();
+  await expect(nav.getByRole("link", { name: /Dołącz do testów/i })).toBeVisible();
+});
+
+test("has hero section", async ({ page }) => {
+  await page.goto("/");
+
   const h1 = page.getByRole("heading", { level: 1 });
   await expect(h1).toBeVisible();
-  await expect(h1).toContainText("Szum-Tech");
-  await expect(h1).toContainText("Next.js Template");
+  await expect(h1).toContainText("Naturalnie na dnie");
 
-  // Hero description
-  await expect(page.getByText(/Enterprise-ready Next\.js starter template/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Chcę przetestować/i }).first()).toBeVisible();
+  await expect(page.getByRole("link", { name: /Poznaj proces produkcji/i })).toBeVisible();
+});
 
-  // CTA buttons - Button asChild renders as role="button" with href
-  await expect(page.getByRole("link", { name: /Use This Template/i }).first()).toBeVisible();
-  await expect(page.getByRole("link", { name: /View on GitHub/i }).first()).toBeVisible();
+test("has mission section", async ({ page }) => {
+  await page.goto("/");
+
+  const section = page.locator("#misja");
+  await expect(section.getByRole("heading", { level: 2 })).toContainText("ołowiu");
+  await expect(section.getByText("Czysta woda")).toBeVisible();
+  await expect(section.getByText("Nowa technologia")).toBeVisible();
+  await expect(section.getByText("Lokalnie")).toBeVisible();
+});
+
+test("has process section", async ({ page }) => {
+  await page.goto("/");
+
+  const section = page.locator("#proces");
+  await expect(section.getByRole("heading", { level: 2 })).toContainText("Lithos");
+  await expect(section.getByText("01")).toBeVisible();
+  await expect(section.getByText("02")).toBeVisible();
+  await expect(section.getByText("03")).toBeVisible();
+  await expect(section.getByText("04")).toBeVisible();
 });
 
 test("has features section", async ({ page }) => {
   await page.goto("/");
 
-  const featuresSection = page.locator("#features");
-
-  await expect(featuresSection.getByRole("heading", { level: 2, name: /Why Choose This Template/i })).toBeVisible();
-
-  // Check all feature cards using constants
-  // CardTitle renders as div, not h3, so we search by text within section
-  for (const title of FEATURE_TITLES) {
-    await expect(featuresSection.getByText(title, { exact: true })).toBeVisible();
-  }
+  const section = page.locator("#cechy");
+  await expect(section.getByRole("heading", { level: 2 })).toContainText("znikać");
 });
 
-test("has szum-tech ecosystem section", async ({ page }) => {
+test("has signup form", async ({ page }) => {
   await page.goto("/");
 
-  const ecosystemSection = page.locator("#ecosystem");
-
-  // Verify section heading
-  await expect(ecosystemSection.getByRole("heading", { level: 2, name: /Szum-Tech Ecosystem/i })).toBeVisible();
-
-  // Verify Open Source badge
-  await expect(ecosystemSection.getByText("Open Source")).toBeVisible();
-
-  // Verify section description
-  await expect(ecosystemSection.getByText(/powered by a suite of open-source packages/i)).toBeVisible();
-
-  // Verify all package cards are present (4 packages)
-  for (const pkg of SZUM_TECH_PACKAGES) {
-    // Verify package name
-    await expect(ecosystemSection.getByText(pkg.name, { exact: true })).toBeVisible();
-
-    // Verify npm package name
-    await expect(ecosystemSection.getByText(pkg.packageName)).toBeVisible();
-  }
-
-  // Verify the correct number of GitHub buttons (one per package)
-  const githubButtons = ecosystemSection.getByRole("link", { name: /view .* on github/i });
-  await expect(githubButtons).toHaveCount(SZUM_TECH_PACKAGE_COUNT);
-
-  // Verify Explore All Packages button
-  await expect(ecosystemSection.getByRole("link", { name: /Explore All Packages/i })).toBeVisible();
+  const section = page.locator("#zapisy");
+  await expect(section.getByRole("heading", { level: 2 })).toContainText("serię");
+  await expect(section.getByLabel(/adres e-mail/i)).toBeVisible();
+  await expect(section.getByLabel(/kontakt z wędkarstwem/i)).toBeVisible();
+  await expect(section.getByRole("button", { name: /informację o starcie/i })).toBeVisible();
 });
 
-test("has tech stack section", async ({ page }) => {
+test("signup form shows success message", async ({ page }) => {
   await page.goto("/");
 
-  const techStackSection = page.locator("#tech-stack");
+  const section = page.locator("#zapisy");
+  await section.getByLabel(/adres e-mail/i).fill("test@lithos.pl");
+  await section.getByLabel(/kontakt z wędkarstwem/i).selectOption("hobbysta");
+  await section.getByRole("button", { name: /informację o starcie/i }).click();
 
-  await expect(techStackSection.getByRole("heading", { level: 2, name: /Tech Stack/i })).toBeVisible();
-
-  // Tech stack categories from constants - use Badge elements
-  for (const category of TECH_STACK_CATEGORIES) {
-    await expect(techStackSection.getByText(category, { exact: true })).toBeVisible();
-  }
-
-  // Tech stack items count from constants
-  const techItems = techStackSection.getByRole("listitem");
-  await expect(techItems).toHaveCount(TECH_STACK_COUNT);
-
-  // Verify all technology images from constants
-  for (const tech of TECH_STACK_ITEMS) {
-    await expect(techStackSection.getByRole("img", { name: tech.name })).toBeVisible();
-  }
-});
-
-test("has quick start section", async ({ page }) => {
-  await page.goto("/");
-
-  const quickStartSection = page.locator("#quick-start");
-
-  await expect(quickStartSection.getByRole("heading", { level: 2, name: /Quick Start/i })).toBeVisible();
-
-  // Quick start steps from constants
-  // CardTitle contains step number + title, so don't use exact match for title
-  for (const step of QUICK_START_STEPS) {
-    // Check that step title exists within the section (title is part of larger text with step number)
-    await expect(quickStartSection.getByText(step.title)).toBeVisible();
-    // Check that command exists within the section
-    await expect(quickStartSection.getByText(step.command)).toBeVisible();
-  }
-});
-
-test("has scripts section", async ({ page }) => {
-  await page.goto("/");
-
-  const scriptsSection = page.locator("#scripts");
-
-  await expect(scriptsSection.getByRole("heading", { level: 2, name: /Built-in Scripts/i })).toBeVisible();
-
-  // Check all script commands from constants within the scripts section
-  for (const script of SCRIPTS) {
-    await expect(scriptsSection.getByText(script.command, { exact: true })).toBeVisible();
-  }
+  await expect(section.getByText(/Dziękujemy za zainteresowanie/i)).toBeVisible();
 });
 
 test("has footer", async ({ page }) => {
   await page.goto("/");
 
   const footer = page.getByRole("contentinfo");
-
-  await expect(footer.getByText("Szum-Tech Next.js Template")).toBeVisible();
-  await expect(footer.getByRole("link", { name: "Jan Szewczyk" })).toBeVisible();
-  await expect(footer.getByRole("link", { name: /Source/i })).toBeVisible();
-});
-
-test("open GitHub repo in new tab", async ({ page, context }) => {
-  await page.goto("/");
-
-  // Click GitHub link in header - find by aria-label
-  const pagePromise = context.waitForEvent("page");
-  await page.getByLabel(/View GitHub repository/i).click();
-  const newPage = await pagePromise;
-  await newPage.waitForLoadState();
-
-  expect(await newPage.title()).toMatch(/GitHub.*JanSzewczyk.*nextjs-szumplate/i);
-  expect(newPage.url()).toMatch(/^https:\/\/github\.com\//);
-});
-
-test("tech stack links open in new tab", async ({ page, context }) => {
-  await page.goto("/");
-
-  const techStackSection = page.locator("#tech-stack");
-
-  // Click on first tech link (from constants)
-  const firstTech = TECH_STACK_ITEMS[0];
-  // eslint-disable-next-line playwright/no-conditional-in-test -- type narrowing guard, not conditional test logic
-  if (!firstTech) throw new Error("TECH_STACK_ITEMS is empty, expected at least one item");
-  const escapedName = firstTech.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-  const pagePromise = context.waitForEvent("page");
-  await techStackSection.getByRole("link", { name: new RegExp(`Learn more about ${escapedName}`, "i") }).click();
-  const newPage = await pagePromise;
-  await newPage.waitForLoadState();
-
-  expect(newPage.url()).toMatch(new RegExp(`^${firstTech.href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`));
+  await expect(footer.getByText("Lithos")).toBeVisible();
+  await expect(footer.getByText(/Wędkarstwo w zgodzie z naturą/i)).toBeVisible();
 });
