@@ -2,12 +2,12 @@ import { type MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Next.js Szumplate",
-    short_name: "Szumplate.js",
-    description: "A Next.js application with Tailwind CSS and optimized setup.",
+    name: "Lithos 3D — Naturalnie na dnie. Z betonu i pasji.",
+    short_name: "Lithos",
+    description: "Innowacyjne koszyczki Method Feeder z zbrojonego betonu. Precyzja druku 3D, zero ołowiu.",
     start_url: "/",
     display: "standalone",
-    background_color: "#1a202c", // Matches Tailwind's bg-app-background
-    theme_color: "#1a202c" // Matches Tailwind's bg-app-background
+    background_color: "#F9F9F8",
+    theme_color: "#2C3033"
   };
 }

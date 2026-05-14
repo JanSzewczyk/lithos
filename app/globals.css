@@ -1,5 +1,366 @@
 @import "tailwindcss";
 
-@import "@szum-tech/design-system/tailwind/global.css";
+@theme {
+  --color-cement: #f9f9f8;
+  --color-concrete: #eaebeb;
+  --color-concrete-dark: #d1d4d5;
+  --color-ink: #2c3033;
+  --color-ink-soft: #3a3f42;
+  --color-ink-muted: #6b7173;
+  --color-accent: #7ea180;
+  --color-accent-deep: #5f8463;
+  --color-accent-soft: #e4ecdf;
+  --color-moss: #4a6b4d;
 
-@source "../node_modules/@szum-tech/design-system";
+  --font-display: var(--font-bricolage, "Bricolage Grotesque", system-ui, sans-serif);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #f9f9f8;
+    color: #2c3033;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* ── Stone visual ─────────────────────────────────────────── */
+
+@keyframes lithos-morph {
+  0%,
+  100% {
+    border-radius: 64% 36% 58% 42% / 52% 44% 56% 48%;
+  }
+  50% {
+    border-radius: 52% 48% 62% 38% / 58% 42% 50% 50%;
+  }
+}
+
+@keyframes lithos-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.stone-stage {
+  position: relative;
+  aspect-ratio: 1 / 1.05;
+  width: 100%;
+  max-width: 540px;
+  margin-left: auto;
+}
+
+.stone {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(at 32% 28%, rgba(255, 255, 255, 0.85), transparent 40%),
+    radial-gradient(at 70% 78%, rgba(44, 48, 51, 0.18), transparent 45%),
+    linear-gradient(150deg, #e7e6e2 0%, #c9c8c2 55%, #a8a7a1 100%);
+  border-radius: 64% 36% 58% 42% / 52% 44% 56% 48%;
+  box-shadow:
+    inset 18px 28px 48px rgba(255, 255, 255, 0.45),
+    inset -22px -32px 60px rgba(44, 48, 51, 0.18),
+    0 50px 80px -30px rgba(44, 48, 51, 0.32);
+  animation: lithos-morph 16s ease-in-out infinite;
+}
+
+.stone::before,
+.stone::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(44, 48, 51, 0.07);
+  mix-blend-mode: multiply;
+}
+
+.stone::before {
+  width: 14%;
+  height: 8%;
+  top: 38%;
+  left: 26%;
+  filter: blur(2px);
+}
+
+.stone::after {
+  width: 9%;
+  height: 6%;
+  top: 62%;
+  left: 58%;
+  filter: blur(3px);
+  transform: rotate(-12deg);
+}
+
+.stone-grain {
+  position: absolute;
+  inset: 0;
+  border-radius: 64% 36% 58% 42% / 52% 44% 56% 48%;
+  background-image: radial-gradient(rgba(44, 48, 51, 0.16) 1px, transparent 1.4px);
+  background-size: 4px 4px;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.holes {
+  position: absolute;
+  inset: 18%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 6%;
+  pointer-events: none;
+  transform: rotate(-8deg);
+  opacity: 0.55;
+}
+
+.holes span {
+  background: radial-gradient(circle at 30% 30%, rgba(44, 48, 51, 0.55), rgba(44, 48, 51, 0.25));
+  border-radius: 999px;
+  box-shadow:
+    inset 0 0 4px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.holes span:nth-child(3n) {
+  opacity: 0.6;
+}
+
+.holes span:nth-child(5n) {
+  opacity: 0.4;
+}
+
+.float-label {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2c3033;
+  border: 1px solid #eaebeb;
+  box-shadow: 0 12px 30px -12px rgba(44, 48, 51, 0.25);
+  animation: lithos-float 6s ease-in-out infinite;
+}
+
+.float-label .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #7ea180;
+  flex-shrink: 0;
+}
+
+.fl-1 {
+  top: 10%;
+  left: -8%;
+}
+
+.fl-2 {
+  top: 38%;
+  right: -10%;
+  animation-delay: -2s;
+}
+
+.fl-3 {
+  bottom: 14%;
+  left: -4%;
+  animation-delay: -4s;
+}
+
+/* ── Mini stones (dark section) ───────────────────────────── */
+
+.mini-stone {
+  position: absolute;
+  background:
+    radial-gradient(at 30% 30%, rgba(255, 255, 255, 0.6), transparent 45%), linear-gradient(150deg, #b5b3ad, #6f6d67);
+  box-shadow:
+    inset 8px 14px 22px rgba(255, 255, 255, 0.25),
+    inset -10px -14px 24px rgba(0, 0, 0, 0.35),
+    0 30px 50px -20px rgba(0, 0, 0, 0.6);
+}
+
+.ms1 {
+  width: 56%;
+  height: 56%;
+  top: 18%;
+  left: 20%;
+  border-radius: 60% 40% 55% 45% / 50% 50% 50% 50%;
+  z-index: 3;
+}
+
+.ms2 {
+  width: 42%;
+  height: 42%;
+  bottom: 6%;
+  right: 8%;
+  border-radius: 52% 48% 60% 40% / 48% 56% 44% 52%;
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.ms3 {
+  width: 30%;
+  height: 30%;
+  top: 8%;
+  right: 12%;
+  border-radius: 50% 50% 60% 40% / 55% 45% 55% 45%;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+/* ── Anatomy visual ───────────────────────────────────────── */
+
+.anatomy-visual-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(at 40% 30%, rgba(255, 255, 255, 0.5), transparent 50%),
+    radial-gradient(at 65% 75%, rgba(44, 48, 51, 0.15), transparent 45%),
+    linear-gradient(160deg, #d5d4ce 0%, #b8b7b0 40%, #9c9b94 80%, #8a8983 100%);
+}
+
+.anatomy-visual-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(44, 48, 51, 0.22) 1px, transparent 1.5px);
+  background-size: 5px 5px;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+
+.anatomy-visual-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.12) 3px,
+    rgba(255, 255, 255, 0.12) 4px
+  );
+  opacity: 0.6;
+}
+
+.anatomy-holes {
+  position: absolute;
+  top: 14%;
+  left: 16%;
+  right: 16%;
+  bottom: 22%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10%;
+  transform: rotate(-4deg);
+  pointer-events: none;
+}
+
+.anatomy-holes span {
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 35%, rgba(44, 48, 51, 0.5), rgba(44, 48, 51, 0.2));
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.anatomy-holes span:nth-child(odd) {
+  opacity: 0.7;
+}
+
+/* ── Custom buttons ───────────────────────────────────────── */
+
+.btn-primary-tw {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition:
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.2s,
+    box-shadow 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+  background: #7ea180;
+  color: white;
+  box-shadow: 0 8px 24px -10px rgba(126, 161, 128, 0.6);
+  border: none;
+}
+
+.btn-primary-tw:hover {
+  background: #5f8463;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px -12px rgba(126, 161, 128, 0.7);
+}
+
+.btn-secondary-tw {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+  background: transparent;
+  color: #2c3033;
+  border: 1px solid #d1d4d5;
+}
+
+.btn-secondary-tw:hover {
+  background: white;
+  border-color: #3a3f42;
+}
+
+/* ── Form select ──────────────────────────────────────────── */
+
+.form-select-tw {
+  appearance: none;
+  width: 100%;
+  padding: 16px 48px 16px 20px;
+  border-radius: 18px;
+  border: 1px solid #d1d4d5;
+  background-color: #f9f9f8;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='none' stroke='%236B7173' stroke-width='1.5' d='M1 1l5 5 5-5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  font-size: 16px;
+  color: #2c3033;
+  font-family: inherit;
+  transition:
+    border 0.18s,
+    box-shadow 0.18s,
+    background 0.18s;
+}
+
+.form-select-tw:focus {
+  outline: none;
+  border-color: #7ea180;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(126, 161, 128, 0.18);
+}
