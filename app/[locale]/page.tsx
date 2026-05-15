@@ -88,8 +88,8 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <LandingProcess />
         <LandingFeatures />
         <LandingSignup />
-        <LandingFooter />
       </main>
+      <LandingFooter />
     </>
   );
 }

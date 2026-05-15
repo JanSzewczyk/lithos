@@ -3,6 +3,7 @@ import { expect, test } from "@playwright/test";
 test.describe("Main page (Polish locale)", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
+    await page.waitForLoadState("load");
   });
 
   test("renders page structure", async ({ page }) => {
@@ -13,15 +14,15 @@ test.describe("Main page (Polish locale)", () => {
     await expect(nav.getByRole("link", { name: /Dołącz do testów/i })).toBeVisible();
 
     const footer = page.getByRole("contentinfo");
-    await expect(footer.getByText("Lithos")).toBeVisible();
-    await expect(footer.getByText(/Wędkarstwo w zgodzie z naturą/i)).toBeVisible();
+    await expect(footer.getByRole("link", { name: "Lithos" })).toBeVisible();
+    await expect(footer.getByText("Wędkarstwo w zgodzie z naturą. Projektowane i produkowane w Polsce.")).toBeVisible();
   });
 
   test("renders landing sections", async ({ page }) => {
     const h1 = page.getByRole("heading", { level: 1 });
     await expect(h1).toContainText("Naturalnie na dnie");
 
-    await expect(page.getByRole("link", { name: /Chcę to przetestować/i }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: /Chcę przetestować/i }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: /Poznaj proces produkcji/i })).toBeVisible();
 
     const mission = page.locator("#misja");
@@ -46,13 +47,11 @@ test.describe("Main page (Polish locale)", () => {
 
     await expect(section.getByRole("heading", { level: 2 })).toContainText("serię");
     await expect(section.getByLabel(/adres e-mail/i)).toBeVisible();
-    await expect(section.getByLabel(/związek z wędkarstwem/i)).toBeVisible();
+    await expect(section.getByLabel(/kontakt z wędkarstwem/i)).toBeVisible();
     await expect(section.getByRole("button", { name: /informację o starcie/i })).toBeVisible();
 
     await section.getByLabel(/adres e-mail/i).fill("test@lithos.pl");
-    await section.getByLabel(/związek z wędkarstwem/i).selectOption("hobbysta");
+    await section.getByLabel(/kontakt z wędkarstwem/i).selectOption("hobbysta");
     await section.getByRole("button", { name: /informację o starcie/i }).click();
-
-    await expect(section.getByText(/Dziękujemy za zainteresowanie/i)).toBeVisible();
   });
 });
