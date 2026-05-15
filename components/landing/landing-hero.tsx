@@ -30,9 +30,9 @@ export function LandingHero() {
             >
               {t("titleLine1")} <br />
               Z&nbsp;
-              <em className="text-moss font-normal italic" style={{ fontVariationSettings: '"wdth" 88' }}>
+              <span className="text-moss font-normal italic" style={{ fontVariationSettings: '"wdth" 88' }}>
                 {t("titleAccentWord")}
-              </em>{" "}
+              </span>{" "}
               {t("titleLine2suffix")}
             </h1>
 
@@ -45,44 +45,44 @@ export function LandingHero() {
 
             <div className="mt-9 flex flex-wrap gap-3">
               <a href="#zapisy" className="btn-primary-tw">
-                {t("ctaPrimary")} <ArrowRightIcon width={16} height={16} />
+                {t("ctaPrimary")} <ArrowRightIcon width={16} height={16} aria-hidden="true" />
               </a>
               <a href="#proces" className="btn-secondary-tw">
                 {t("ctaSecondary")}
               </a>
             </div>
 
-            <div className="border-concrete mt-12 flex gap-9 border-t pt-8">
+            <dl className="border-concrete mt-12 flex gap-9 border-t pt-8">
               <div>
-                <div className="font-display text-ink text-[30px] leading-none font-medium tracking-tight">
+                <dt className="text-ink-muted max-w-[22ch] text-[13px] leading-snug">{t("stat0label")}</dt>
+                <dd className="font-display text-ink mt-2 text-[30px] leading-none font-medium tracking-tight">
                   {t("stat0value")}
-                </div>
-                <div className="text-ink-muted mt-2 max-w-[22ch] text-[13px] leading-snug">{t("stat0label")}</div>
+                </dd>
               </div>
               <div>
-                <div className="font-display text-ink text-[30px] leading-none font-medium tracking-tight">
+                <dt className="text-ink-muted max-w-[22ch] text-[13px] leading-snug">{t("stat1label")}</dt>
+                <dd className="font-display text-ink mt-2 text-[30px] leading-none font-medium tracking-tight">
                   {t("stat1value")}
-                </div>
-                <div className="text-ink-muted mt-2 max-w-[22ch] text-[13px] leading-snug">{t("stat1label")}</div>
+                </dd>
               </div>
               <div>
-                <div className="font-display text-ink text-[30px] leading-none font-medium tracking-tight">
+                <dt className="text-ink-muted max-w-[22ch] text-[13px] leading-snug">{t("stat2label")}</dt>
+                <dd className="font-display text-ink mt-2 text-[30px] leading-none font-medium tracking-tight">
                   {t("stat2value")}
-                </div>
-                <div className="text-ink-muted mt-2 max-w-[22ch] text-[13px] leading-snug">{t("stat2label")}</div>
+                </dd>
               </div>
-            </div>
+            </dl>
           </div>
 
-          <div className="stone-stage">
-            <div className="stone">
-              <div className="holes">
-                {Array.from({ length: 20 }).map((_, i) => (
-                  <span key={i} />
-                ))}
-              </div>
-              <div className="stone-grain" />
-            </div>
+          <div className="stone-stage" aria-hidden="true">
+            {/*<div className="stone">*/}
+            {/*  <div className="holes">*/}
+            {/*    {Array.from({ length: 20 }).map((_, i) => (*/}
+            {/*      <span key={i} />*/}
+            {/*    ))}*/}
+            {/*  </div>*/}
+            {/*  <div className="stone-grain" />*/}
+            {/*</div>*/}
             <div className="float-label fl-1">
               <span className="dot" />
               {t("label1")}

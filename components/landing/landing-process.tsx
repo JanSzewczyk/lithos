@@ -22,7 +22,7 @@ export function LandingProcess() {
               className="font-display mt-3.5 leading-[1.02] font-medium tracking-[-0.03em]"
               style={{ fontSize: "clamp(36px,4.6vw,64px)", fontVariationSettings: '"wdth" 92' }}
             >
-              {t("title")} <em className="text-moss font-normal italic">{t("titleAccent")}</em>
+              {t("title")} <span className="text-moss font-normal italic">{t("titleAccent")}</span>
             </h2>
           </div>
           <p

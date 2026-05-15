@@ -9,7 +9,12 @@
     "mission": "Mission",
     "process": "Process",
     "product": "Product",
-    "cta": "Join the tests"
+    "cta": "Join the tests",
+    "skipToContent": "Skip to main content",
+    "navAriaLabel": "Main navigation",
+    "languageSwitcherLabel": "Language selection",
+    "switchToPolish": "Switch to Polish",
+    "switchToEnglish": "Switch to English"
   },
   "hero": {
     "badge": "100% safe for the environment",
@@ -100,6 +105,7 @@
   },
   "footer": {
     "tagline": "Fishing in harmony with nature. Designed and produced in Poland.",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "footerAriaLabel": "Page footer"
   }
 }

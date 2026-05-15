@@ -75,13 +75,19 @@ async function buildJsonLd(locale: string) {
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const jsonLd = await buildJsonLd(locale);
+  const [jsonLd, t] = await Promise.all([buildJsonLd(locale), getTranslations({ locale, namespace: "nav" })]);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <a
+        href="#top"
+        className="bg-accent fixed top-4 left-4 z-50 -translate-y-[calc(100%+2rem)] rounded px-4 py-2 font-medium text-white focus:translate-y-0"
+      >
+        {t("skipToContent")}
+      </a>
+      <LandingNav />
       <main className="bg-cement min-h-screen">
-        <LandingNav />
         <LandingHero />
         <LandingAnatomy />
         <LandingMission />
