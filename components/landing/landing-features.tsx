@@ -28,7 +28,7 @@ export function LandingFeatures() {
               >
                 {t("title")}
                 <br />
-                <em className="font-normal text-[#C5DBC8] italic">{t("titleAccent")}</em>
+                <span className="font-normal text-[#C5DBC8] italic">{t("titleAccent")}</span>
               </h2>
               <p
                 className="mt-[22px] max-w-[56ch] leading-relaxed text-white/70"
@@ -37,22 +37,25 @@ export function LandingFeatures() {
                 {t("body")}
               </p>
 
-              <div className="mt-8 flex flex-col gap-4.5">
+              <ul className="mt-8 flex list-none flex-col gap-4.5 p-0">
                 {CHECKS.map((key) => (
-                  <div
+                  <li
                     key={key}
                     className="flex gap-4 rounded-[20px] border border-white/8 bg-white/[0.04] p-[18px_22px] transition-colors hover:bg-white/[0.07]"
                   >
-                    <div className="bg-accent text-ink grid size-6.5 shrink-0 place-items-center rounded-full">
-                      <CheckIcon width={14} height={14} />
+                    <div
+                      className="bg-accent text-ink grid size-6.5 shrink-0 place-items-center rounded-full"
+                      aria-hidden="true"
+                    >
+                      <CheckIcon width={14} height={14} aria-hidden="true" />
                     </div>
                     <p className="text-base leading-normal text-white/88">{t(key)}</p>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
-            <div className="relative aspect-square">
+            <div className="relative aspect-square" aria-hidden="true">
               <div className="mini-stone ms1" />
               <div className="mini-stone ms2" />
               <div className="mini-stone ms3" />

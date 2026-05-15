@@ -8,12 +8,20 @@ export function LandingMission() {
 
   const PILLARS = [
     {
-      icon: <DropletIcon width={22} height={22} />,
+      icon: <DropletIcon width={22} height={22} aria-hidden="true" />,
       titleKey: "pillar0title" as const,
       textKey: "pillar0text" as const
     },
-    { icon: <CpuIcon width={22} height={22} />, titleKey: "pillar1title" as const, textKey: "pillar1text" as const },
-    { icon: <MapIcon width={22} height={22} />, titleKey: "pillar2title" as const, textKey: "pillar2text" as const }
+    {
+      icon: <CpuIcon width={22} height={22} aria-hidden="true" />,
+      titleKey: "pillar1title" as const,
+      textKey: "pillar1text" as const
+    },
+    {
+      icon: <MapIcon width={22} height={22} aria-hidden="true" />,
+      titleKey: "pillar2title" as const,
+      textKey: "pillar2text" as const
+    }
   ];
 
   return (
@@ -27,7 +35,7 @@ export function LandingMission() {
               style={{ fontSize: "clamp(36px,4.6vw,64px)", fontVariationSettings: '"wdth" 92' }}
             >
               {t("title")}
-              <em className="text-moss font-normal italic">{t("titleAccent")}</em>
+              <span className="text-moss font-normal italic">{t("titleAccent")}</span>
             </h2>
           </div>
           <p

@@ -9,7 +9,12 @@
     "mission": "Misja",
     "process": "Proces",
     "product": "Produkt",
-    "cta": "Dołącz do testów"
+    "cta": "Dołącz do testów",
+    "skipToContent": "Przejdź do treści",
+    "navAriaLabel": "Nawigacja główna",
+    "languageSwitcherLabel": "Wybór języka",
+    "switchToPolish": "Przełącz na język polski",
+    "switchToEnglish": "Przełącz na język angielski"
   },
   "hero": {
     "badge": "100% bezpieczne dla środowiska",
@@ -100,6 +105,7 @@
   },
   "footer": {
     "tagline": "Wędkarstwo w zgodzie z naturą. Projektowane i produkowane w Polsce.",
-    "rights": "Wszystkie prawa zastrzeżone."
+    "rights": "Wszystkie prawa zastrzeżone.",
+    "footerAriaLabel": "Stopka strony"
   }
 }

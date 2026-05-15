@@ -14,7 +14,7 @@ export function LandingAnatomy() {
             className="font-display text-ink mt-3.5 leading-[1.02] font-medium tracking-[-0.03em]"
             style={{ fontSize: "clamp(36px,4.6vw,64px)", fontVariationSettings: '"wdth" 92' }}
           >
-            {t("title")} <em className="text-moss font-normal italic">{t("titleAccent")}</em>
+            {t("title")} <span className="text-moss font-normal italic">{t("titleAccent")}</span>
           </h2>
           <p
             className="text-ink-soft mx-auto mt-4.5 max-w-[58ch] leading-relaxed"
@@ -42,6 +42,7 @@ export function LandingAnatomy() {
 
           <div
             className="relative overflow-hidden rounded-[3rem] opacity-[0.92] transition-opacity duration-500 hover:opacity-100"
+            aria-hidden="true"
             style={{
               aspectRatio: "4/5",
               boxShadow: "inset 0 0 60px rgba(44,48,51,0.12),0 40px 80px -30px rgba(44,48,51,0.22)"
@@ -83,6 +84,12 @@ export function LandingAnatomy() {
                 {t("ecoconcreteTitle")}
               </h3>
               <p className="text-ink-muted mt-2 text-[15px] leading-relaxed">{t("ecoconcrete")}</p>
+            </div>
+            <div className="hidden max-[980px]:block">
+              <h3 className="font-display text-ink text-[19px] leading-tight font-medium tracking-[-0.02em]">
+                {t("noGlareTitle")}
+              </h3>
+              <p className="text-ink-muted mt-2 text-[15px] leading-relaxed">{t("noGlare")}</p>
             </div>
           </div>
         </div>
