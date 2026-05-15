@@ -1,15 +1,13 @@
 import * as React from "react";
 
 import { CheckIcon } from "lucide-react";
-
-const CHECKS = [
-  "Nienasiąkliwa struktura betonu nie zmienia wagi podczas wędkowania.",
-  "Zbrojenie włóknem zapobiega kruszeniu się koszyczka.",
-  "Możliwość doboru koloru betonu do rodzaju dna (piasek / muł).",
-  'Cena tradycyjnego ołowiu — bez ekologicznego "podatku".'
-];
+import { useTranslations } from "next-intl";
 
 export function LandingFeatures() {
+  const t = useTranslations("features");
+
+  const CHECKS = ["check0", "check1", "check2", "check3"] as const;
+
   return (
     <section className="scroll-m-20 py-24 pt-8 max-md:py-16" id="cechy">
       <div className="mx-auto max-w-310 px-7 max-md:px-5">
@@ -28,28 +26,27 @@ export function LandingFeatures() {
                 className="font-display leading-[1.02] font-medium tracking-[-0.03em] text-white"
                 style={{ fontSize: "clamp(36px,4.6vw,64px)", fontVariationSettings: '"wdth" 92' }}
               >
-                Zaprojektowane,
+                {t("title")}
                 <br />
-                by <em className="font-normal text-[#C5DBC8] italic">znikać.</em>
+                <em className="font-normal text-[#C5DBC8] italic">{t("titleAccent")}</em>
               </h2>
               <p
                 className="mt-[22px] max-w-[56ch] leading-relaxed text-white/70"
                 style={{ fontSize: "clamp(17px,1.4vw,20px)" }}
               >
-                Ołów błyszczy i&nbsp;odstrasza ostrożne ryby. Beton tworzy naturalną strukturę, która idealnie stapia
-                się z&nbsp;dnem jeziora czy rzeki. Ryba widzi tylko Twoją przynętę.
+                {t("body")}
               </p>
 
               <div className="mt-8 flex flex-col gap-4.5">
-                {CHECKS.map((check, i) => (
+                {CHECKS.map((key) => (
                   <div
-                    key={i}
+                    key={key}
                     className="flex gap-4 rounded-[20px] border border-white/8 bg-white/[0.04] p-[18px_22px] transition-colors hover:bg-white/[0.07]"
                   >
                     <div className="bg-accent text-ink grid size-6.5 shrink-0 place-items-center rounded-full">
                       <CheckIcon width={14} height={14} />
                     </div>
-                    <p className="text-base leading-normal text-white/88">{check}</p>
+                    <p className="text-base leading-normal text-white/88">{t(key)}</p>
                   </div>
                 ))}
               </div>

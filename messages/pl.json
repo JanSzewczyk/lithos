@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "title": "Lithos 3D — Naturalnie na dnie. Z betonu i pasji.",
+    "description": "Innowacyjne koszyczki Method Feeder z zbrojonego betonu. Precyzja druku 3D, naturalne właściwości betonu, zero ołowiu."
+  },
+  "nav": {
+    "mission": "Misja",
+    "process": "Proces",
+    "product": "Produkt",
+    "cta": "Dołącz do testów"
+  },
+  "hero": {
+    "badge": "100% bezpieczne dla środowiska",
+    "titleLine1": "Naturalnie na dnie.",
+    "titleAccentWord": "betonu",
+    "titleLine2suffix": "i pasji.",
+    "subtitle": "Tworzymy innowacyjne koszyczki Method Feeder. Łączymy precyzję druku 3D z naturalnymi właściwościami zbrojonego betonu. Dla Twojej skuteczności i czystości naszych wód.",
+    "ctaPrimary": "Chcę przetestować",
+    "ctaSecondary": "Poznaj proces produkcji",
+    "stat0value": "0%",
+    "stat0label": "ołowiu w składzie koszyczka",
+    "stat1value": "3D",
+    "stat1label": "drukowane formy matrycowe",
+    "stat2value": "PL",
+    "stat2label": "w 100% projektowane i produkowane",
+    "label1": "Zero ołowiu",
+    "label2": "Tekstura kamienia",
+    "label3": "Neutralne pH"
+  },
+  "anatomy": {
+    "eyebrow": "Produkt",
+    "title": "Czym dokładnie jest",
+    "titleAccent": "Lithos?",
+    "subtitle": "To nie jest kolejny zwykły ciężarek. To przemyślane narzędzie dla wędkarzy Method Feeder, łączące naturalny kamuflaż z nowoczesną inżynierią.",
+    "ecoconcreteTitle": "Zbrojony Ekobeton",
+    "ecoconcrete": "Główny rdzeń obciążeniowy wykonany z nienasiąkliwego, tonącego materiału. Zero toksyn w wodzie, idealne dopasowanie do dna.",
+    "noGlareTitle": "Brak Odbić Światła",
+    "noGlare": "Matowa, porowata struktura nie płoszy ryb — w przeciwieństwie do gładkiego, błyszczącego plastiku czy ołowiu.",
+    "wingsTitle": "Skrzydła i Wypustki 3D",
+    "wings": "Precyzyjnie wydrukowana obudowa idealnie trzyma zanętę podczas silnego rzutu i uderzenia o wodę.",
+    "aeroTitle": "Aerodynamiczny Kształt",
+    "aero": "Zaprojektowany w oprogramowaniu CAD dla maksymalnie dalekich i celnych rzutów, niezależnie od wiatru.",
+    "overlayTitle": "Anatomia Koszyczka",
+    "overlaySub": "Mikrowłókna & Druk FDM"
+  },
+  "mission": {
+    "eyebrow": "Nasza misja",
+    "title": "Dlaczego zrezygnowaliśmy z ",
+    "titleAccent": "ołowiu?",
+    "body": "Wędkarstwo to obcowanie z naturą, a jednak od lat zatruwamy ją tysiącami ton ołowiu rocznie. Każdy zerwany zestaw to toksyczny ślad na dnie jeziora, który zostaje tam na setki lat. Postanowiliśmy to zmienić, nie idąc na kompromisy w kwestii skuteczności.",
+    "pillar0title": "Czysta woda",
+    "pillar0text": "Nasz beton ma neutralne pH i nie wydziela żadnych toksycznych substancji. Jest bezpieczny dla ryb i ekosystemu.",
+    "pillar1title": "Nowa technologia",
+    "pillar1text": "Wykorzystujemy nowoczesny druk 3D, aby tworzyć formy idealne aerodynamicznie i świetnie trzymające zanętę.",
+    "pillar2title": "Lokalnie",
+    "pillar2text": "Cały proces projektowania i produkcji odbywa się w Polsce. Wspierasz lokalną innowację rzemieślniczą."
+  },
+  "process": {
+    "eyebrow": "Proces produkcji",
+    "title": "Jak powstaje",
+    "titleAccent": "Lithos?",
+    "subtitle": "Od pomysłu do rzutu na łowisku. Połączenie inżynierii i tradycyjnych materiałów budowlanych.",
+    "step0title": "Projekt CAD",
+    "step0desc": "Projektujemy w programach 3D, dbając o każdy milimetr koszyczka. Testujemy aerodynamikę i rozmieszczenie wypustek.",
+    "step1title": "Druk 3D formy",
+    "step1desc": "Drukujemy precyzyjne formy matrycowe. Druk 3D pozwala nam na detale, których nie da się uzyskać przy standardowych odlewach ołowianych.",
+    "step2title": "Mieszanka betonu",
+    "step2desc": "Przygotowujemy specjalistyczny beton zbrojony mikrowłóknami. Zapewnia on odporność na wodę i uderzenia o kamienie.",
+    "step3title": "Suszenie i testy",
+    "step3desc": "Gotowe koszyczki dojrzewają, uzyskując pełną twardość i charakterystyczną, matową strukturę kamuflującą je na dnie."
+  },
+  "features": {
+    "title": "Zaprojektowane,\nby",
+    "titleAccent": "znikać.",
+    "body": "Ołów błyszczy i odstrasza ostrożne ryby. Beton tworzy naturalną strukturę, która idealnie stapia się z dnem jeziora czy rzeki. Ryba widzi tylko Twoją przynętę.",
+    "check0": "Nienasiąkliwa struktura betonu nie zmienia wagi podczas wędkowania.",
+    "check1": "Zbrojenie włóknem zapobiega kruszeniu się koszyczka.",
+    "check2": "Możliwość doboru koloru betonu do rodzaju dna (piasek / muł).",
+    "check3": "Cena tradycyjnego ołowiu — bez ekologicznego \"podatku\"."
+  },
+  "signup": {
+    "eyebrow": "Dołącz do testów",
+    "title": "Tworzymy\npierwszą",
+    "titleAccent": "serię.",
+    "body": "Projekt Lithos jest w fazie aktywnych testów prototypów. Zostaw nam swój e-mail, a poinformujemy Cię, gdy wystartujemy. Możesz też wziąć udział w beta-testach.",
+    "emailLabel": "Twój adres e-mail",
+    "emailPlaceholder": "np. jan@lowisko.pl",
+    "roleLabel": "Jaki jest Twój kontakt z wędkarstwem?",
+    "rolePlaceholder": "Wybierz jedną z opcji…",
+    "roleOption0": "Hobbysta",
+    "roleOption1": "Zawodnik",
+    "roleOption2": "Prowadzę sklep wędkarski",
+    "submitButton": "Chcę otrzymać informację o starcie",
+    "successTitle": "Dziękujemy za zainteresowanie!",
+    "successBody": "Twój adres jest na naszej liście. Będziemy w kontakcie, gdy tylko ruszą testy na wodzie.",
+    "successReset": "Zapisz kolejną osobę",
+    "microcopy": "Twoje dane posłużą wyłącznie do poinformowania Cię o projekcie Lithos. Nie spamujemy."
+  },
+  "footer": {
+    "tagline": "Wędkarstwo w zgodzie z naturą. Projektowane i produkowane w Polsce.",
+    "rights": "Wszystkie prawa zastrzeżone."
+  }
+}
