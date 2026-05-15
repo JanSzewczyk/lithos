@@ -24,7 +24,7 @@ export function LandingSignup() {
   }
 
   return (
-    <section className="scroll-mt-20 py-24 pt-8 max-md:py-16" id="zapisy">
+    <section className="cv-auto scroll-mt-20 py-24 pt-8 max-md:py-16" id="zapisy">
       <div className="mx-auto max-w-310 px-7 max-md:px-5">
         <div className="border-concrete grid grid-cols-2 items-center gap-14 rounded-[48px] border bg-white p-16 max-[900px]:grid-cols-1 max-[900px]:gap-9 max-md:rounded-[36px] max-md:p-7">
           <div>
