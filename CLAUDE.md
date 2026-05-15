@@ -4,8 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Next.js Szumplate is an enterprise-ready Next.js 16.2.6 template with React 19.2.6, TypeScript, Tailwind CSS 4.3.0,
-React Compiler, and comprehensive testing infrastructure (Vitest 4.1, Playwright 1.60).
+**Lithos 3D** is a landing page for an eco-friendly fishing product — reinforced concrete Method Feeder cages printed with 3D technology. Zero lead, produced in Poland.
+
+Built on Next.js 16.2.6 with App Router, React 19.2.6, TypeScript, Tailwind CSS 4.3.0, React Compiler, next-intl v4 (Polish + English), and comprehensive testing infrastructure (Vitest 4.1, Playwright 1.60).
 
 ## Commands
 
@@ -20,11 +21,11 @@ npm run start        # Start production server
 ### Code Quality
 
 ```bash
-npm run lint         # ESLint check
-npm run lint:fix     # ESLint with auto-fix
+npm run lint             # ESLint check
+npm run lint:fix         # ESLint with auto-fix
 npm run prettier:check   # Prettier check
 npm run prettier:write   # Prettier with auto-fix
-npm run type-check   # TypeScript type checking
+npm run type-check       # TypeScript type checking
 ```
 
 ### Testing
@@ -65,14 +66,14 @@ npm run analyze               # Bundle analyzer
 - **Next.js**: 16.2.6 (App Router, Turbopack, React Compiler)
 - **React**: 19.2.6 with React Compiler enabled
 - **TypeScript**: 5.9.3 (strict mode)
-- **Tailwind CSS**: 4.3.0 (CSS-first config)
-- **@szum-tech/design-system**: 3.21.0
-- **Vitest**: 4.1.6 (unit & integration tests)
-- **Playwright**: 1.60.0 (E2E tests)
-- **Storybook**: 10.4.0 (component development)
-- **Zod**: 4.4.3 (validation)
-- **Pino**: 10.3.1 (logging)
-- **next-themes**: 0.4.6 (theming)
+- **Tailwind CSS**: 4.3.0 (CSS-first config via `@theme` directive)
+- **next-intl**: 4.x (i18n — Polish + English, `localePrefix: "as-needed"`)
+- **lucide-react**: icons
+- **Vitest**: 4.1 (unit & integration tests)
+- **Playwright**: 1.60 (E2E tests)
+- **Storybook**: 10.x (component development)
+- **Zod**: 4.x (env validation)
+- **Pino**: 10.x (structured logging)
 
 ### Path Aliases
 
@@ -81,39 +82,90 @@ Use `~/` prefix for absolute imports (configured in tsconfig.json):
 ```typescript
 import logger from "~/lib/logger";
 import { env } from "~/data/env/server";
+import { routing } from "~/i18n/routing";
 ```
 
 ### Key Directories
 
-- **app/**: Next.js App Router pages, layouts, and API routes
-- **features/**: Feature-based modules (see structure below)
-- **components/**: Shared reusable components (ui/, layout/, providers/)
-- **lib/**: Utilities and configurations (logger)
-- **data/env/**: T3 Env type-safe environment variables (server.ts, client.ts)
-- **constants/**: Static data and configuration constants
-- **tests/e2e/**: Playwright E2E tests (\*.e2e.ts pattern)
-- **tests/unit/**: Vitest unit tests (\*.test.ts pattern)
-- **tests/integration/**: Storybook integration tests
+- **app/**: Next.js App Router. Root `app/layout.tsx` is minimal (returns `children`). Locale pages live in `app/[locale]/`.
+- **app/[locale]/**: Locale-specific layout (with `NextIntlClientProvider`, Bricolage Grotesque font, full metadata), page, and error boundary.
+- **components/landing/**: Landing page sections (Hero, Anatomy, Mission, Process, Features, Signup). All use `useTranslations()`.
+- **components/layout/**: Nav (`LandingNav` — async SC using `getTranslations`), Footer, `LanguageSwitcher`.
+- **i18n/**: next-intl configuration — `routing.ts` (locales, defaultLocale), `request.ts` (server config), `navigation.ts` (locale-aware Link/redirect).
+- **messages/**: Translation files — `pl.json` and `en.json` with keys for all landing sections + metadata.
+- **lib/**: Utilities — `logger.ts` (Pino).
+- **data/env/**: T3 Env type-safe environment variables (`server.ts`, `client.ts`).
+- **tests/e2e/**: Playwright E2E tests (`*.e2e.ts` pattern).
+- **tests/unit/**: Vitest unit tests (`*.test.ts` pattern).
 
-### Feature Module Structure
+### i18n Architecture
 
-Features follow a modular architecture pattern:
+Routing: `localePrefix: "as-needed"`, `defaultLocale: "pl"`:
+- `/` → Polish (no prefix)
+- `/en` → English
 
+Middleware lives in `proxy.ts` (Next.js 16 convention — replaces `middleware.ts`). It runs next-intl locale detection and request logging in one pass.
+
+Translation keys are structured by section:
 ```
-features/
-└── example-feature/
-    ├── components/    # Feature-specific components
-    ├── schemas/       # Zod validation schemas
-    └── server/        # Server-side logic (actions, data fetching)
+metadata, nav, hero, anatomy, mission, process, features, signup, footer
 ```
+
+**Server Components** use `useTranslations("section")` (sync) or `getTranslations({ locale, namespace })` (async — required when the component itself is `async`).
+
+**Client Components** (`"use client"`) use `useTranslations("section")` directly — next-intl works with both RSC and client components.
+
+### Lithos Color Palette
+
+Defined via `@theme` in `app/globals.css`:
+
+| Token | Value | Usage |
+|---|---|---|
+| `cement` | `#F9F9F8` | Page background |
+| `concrete` | `#EAEBEB` | Borders, dividers |
+| `concrete-dark` | `#D1D4D5` | Darker borders |
+| `ink` | `#2C3033` | Primary text |
+| `ink-soft` | `#3A3F42` | Secondary text |
+| `ink-muted` | `#6B7173` | Muted text, labels |
+| `accent` | `#7EA180` | Green accent (CTA, badges) |
+| `accent-deep` | `#5F8463` | Darker accent |
+| `accent-soft` | `#E4ECDF` | Light green background |
+| `moss` | `#4A6B4D` | Dark moss text |
+
+Font: `--font-display: var(--font-bricolage)` (Bricolage Grotesque, loaded via `next/font/google`).
+
+### Custom CSS Classes
+
+Defined in `app/globals.css`:
+
+- `.stone-stage`, `.stone`, `.stone-grain`, `.holes` — animated hero feeder visual (organic blob morphing + holes grid)
+- `.float-label`, `.fl-1`, `.fl-2`, `.fl-3` — floating annotation labels on the hero stone
+- `.mini-stone`, `.ms1`, `.ms2`, `.ms3` — mini stone cluster in the Features section
+- `.anatomy-visual-bg`, `.anatomy-holes` — product anatomy section visual
+- `.btn-primary-tw`, `.btn-secondary-tw` — CTA button styles
+- `.form-select-tw` — styled native `<select>` element
+
+### SEO Configuration
+
+- **`app/layout.tsx`** — root layout with `metadataBase` pointing to `VERCEL_URL`
+- **`app/[locale]/layout.tsx`** — full metadata: title, description, keywords, openGraph (with OG image), twitter card, hreflang alternates, robots directive
+- **`app/opengraph-image.tsx`** — 1200×630 branded OG image (Satori/next-og)
+- **`app/apple-icon.tsx`** — 180×180 Apple Touch Icon
+- **`app/sitemap.ts`** — sitemap with `changeFrequency`, `priority`, and language alternates for both locales
+- **`app/robots.ts`** — robots.txt with `/api/` disallow and `host` declaration
+- **`app/[locale]/page.tsx`** — JSON-LD structured data (Organization + WebSite + Product schema)
 
 ### Environment Variables
 
-Environment variables are validated at build-time using T3 Env:
+Validated at build-time via T3 Env (`data/env/server.ts`):
 
-- Server variables: `data/env/server.ts`
-- Client variables: `data/env/client.ts` (must be prefixed with `NEXT_PUBLIC_`)
-- Skip validation with `SKIP_ENV_VALIDATION=true`
+| Variable | Type | Usage |
+|---|---|---|
+| `NODE_ENV` | `development\|test\|production` | Required |
+| `VERCEL_URL` | `string` (optional) | Base URL for SEO/sitemap. Full URL with protocol, e.g. `https://lithos3d.com`. Falls back to `http://localhost:3000`. |
+| `LOG_LEVEL` | `fatal\|error\|warn\|info\|debug\|trace` | Default: `info` |
+| `ANALYZE` | `true\|false` | Enable bundle analyzer |
+| `CI` | `true\|false\|0\|1` | CI environment flag |
 
 ### Logging
 
@@ -121,10 +173,10 @@ Uses Pino logger (`lib/logger.ts`). Create child loggers with context:
 
 ```typescript
 import logger, { createLogger } from "~/lib/logger";
-const apiLogger = createLogger({ module: "api" });
+const pageLogger = createLogger({ module: "landing-page" });
 ```
 
-Request logging is handled automatically via `proxy.ts` with request ID tracking.
+Request logging is handled automatically via `proxy.ts` with unique `X-Request-ID` header per request.
 
 ### Testing Configuration
 
@@ -133,39 +185,16 @@ Vitest 4.1 is configured with two project modes:
 - **unit**: Node environment for unit tests (`*.test.ts` files)
 - **storybook**: Browser environment (Playwright) for Storybook component tests
 
-Storybook tests use play functions for interaction testing with accessibility checks via @storybook/addon-a11y.
-Use `test-only` tag for stories that should be excluded from docs but run in tests.
-
-### Design System
-
-Uses `@szum-tech/design-system` package. Import components directly:
-
-```typescript
-import { Button, Card, Tooltip } from "@szum-tech/design-system";
-```
-
-Icons are re-exported via the design system:
-
-```typescript
-import { GithubIcon, SparklesIcon } from "lucide-react";
-```
-
 ### Health Checks
 
-Built-in health endpoint at `/api/health` with multiple URL aliases: `/healthz`, `/api/healthz`, `/health`, `/ping`
-
-### Theme Support
-
-The app uses `next-themes` for dark/light/system theme switching:
-- `ThemeProvider` wraps the app in `app/layout.tsx`
-- `ThemeToggle` component for user switching
-- Theme is persisted in localStorage
+Built-in health endpoint at `/api/health` with URL aliases: `/healthz`, `/api/healthz`, `/health`, `/ping`
 
 ### Next.js Configuration
 
 - React Compiler enabled (`reactCompiler: true`)
-- Pino externalized for server-side logging
+- Pino externalized for server-side logging (`serverExternalPackages`)
 - Bundle analyzer available via `ANALYZE=true`
+- next-intl plugin via `createNextIntlPlugin("./i18n/request.ts")`
 
 ## Conventions
 
@@ -182,5 +211,7 @@ The app uses `next-themes` for dark/light/system theme switching:
 | Memoization | Use `useMemo`/`useCallback`/`memo` with React Compiler | Let compiler optimize automatically |
 | Imports | Use relative paths (`../../../lib/utils`) | Use path aliases (`~/lib/utils`) |
 | Logging | Use `console.log` in production code | Use structured Pino logging (`logger.info(...)`) |
-| `useFormStatus` | Use in same component as `<form>` | Use in a child component inside the form |
-| Server Actions | Return untyped objects | Use standardized response types with Zod validation |
+| i18n in async SC | Use `useTranslations` in an `async` function | Use `getTranslations` from `next-intl/server` |
+| i18n in sync SC | Use `getTranslations` | Use `useTranslations` directly |
+| `VERCEL_URL` | Use directly as URL | Always pass through `getBaseUrl()` helper (adds `https://` protocol if missing) |
+| OG Image (Satori) | Mix text nodes and elements in the same div | Use `display: flex` on every element with multiple children |
