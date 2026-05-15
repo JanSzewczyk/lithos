@@ -13,7 +13,7 @@ export function LandingProcess() {
   ];
 
   return (
-    <section className="scroll-m-20 py-24 pt-8 max-md:py-16" id="proces">
+    <section className="cv-auto scroll-m-20 py-24 pt-8 max-md:py-16" id="proces">
       <div className="mx-auto max-w-310 px-7 max-md:px-5">
         <div className="mb-14 grid grid-cols-2 items-end gap-16 max-[820px]:grid-cols-1 max-[820px]:gap-6">
           <div>

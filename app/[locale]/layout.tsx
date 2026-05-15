@@ -4,7 +4,7 @@ import { type Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 
 import { env } from "~/data/env/server";
 import { Locale, routing } from "~/i18n/routing";
@@ -100,6 +100,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
+
+  setRequestLocale(locale);
 
   const messages = await getMessages();
 

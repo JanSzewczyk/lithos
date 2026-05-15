@@ -6,7 +6,7 @@ export function LandingAnatomy() {
   const t = useTranslations("anatomy");
 
   return (
-    <section className="border-concrete border-t border-b bg-white py-24 max-md:py-16" id="anatomia">
+    <section className="cv-auto border-concrete border-t border-b bg-white py-24 max-md:py-16" id="anatomia">
       <div className="mx-auto max-w-310 px-7 max-md:px-5">
         <div className="mb-16 text-center">
           <div className="text-ink-muted text-[13px] font-medium tracking-widest uppercase">{t("eyebrow")}</div>
@@ -49,7 +49,7 @@ export function LandingAnatomy() {
           >
             <div className="anatomy-visual-bg absolute inset-0">
               <div className="anatomy-holes">
-                {Array.from({ length: 20 }).map((_, i) => (
+                {Array.from({ length: 12 }).map((_, i) => (
                   <span key={i} />
                 ))}
               </div>

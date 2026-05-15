@@ -24,7 +24,7 @@
     background-color: #f9f9f8;
     color: #2c3033;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizeSpeed;
   }
 }
 
@@ -71,6 +71,7 @@
     inset -22px -32px 60px rgba(44, 48, 51, 0.18),
     0 50px 80px -30px rgba(44, 48, 51, 0.32);
   animation: lithos-morph 16s ease-in-out infinite;
+  transform: translateZ(0);
 }
 
 .stone::before,
@@ -115,7 +116,7 @@
   inset: 18%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   gap: 6%;
   pointer-events: none;
   transform: rotate(-8deg);
@@ -153,6 +154,7 @@
   border: 1px solid #eaebeb;
   box-shadow: 0 12px 30px -12px rgba(44, 48, 51, 0.25);
   animation: lithos-float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 .float-label .dot {
@@ -264,7 +266,7 @@
   bottom: 22%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 10%;
   transform: rotate(-4deg);
   pointer-events: none;
@@ -363,4 +365,23 @@
   border-color: #7ea180;
   background-color: white;
   box-shadow: 0 0 0 4px rgba(126, 161, 128, 0.18);
+}
+
+/* ── Performance ──────────────────────────────────────────── */
+
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stone {
+    animation: none;
+  }
+  .float-label {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

@@ -9,7 +9,7 @@ export function LandingFeatures() {
   const CHECKS = ["check0", "check1", "check2", "check3"] as const;
 
   return (
-    <section className="scroll-m-20 py-24 pt-8 max-md:py-16" id="cechy">
+    <section className="cv-auto scroll-m-20 py-24 pt-8 max-md:py-16" id="cechy">
       <div className="mx-auto max-w-310 px-7 max-md:px-5">
         <div className="bg-ink relative overflow-hidden rounded-[48px] px-16 py-[88px] text-white max-md:rounded-[36px] max-md:px-7 max-md:py-14">
           <div

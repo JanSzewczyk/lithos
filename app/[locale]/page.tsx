@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { env } from "~/data/env/server";
 import { routing } from "~/i18n/routing";
@@ -15,8 +15,7 @@ import {
 import { LandingFooter } from "~/components/layout/landing-footer";
 import { LandingNav } from "~/components/layout/landing-nav";
 
-async function buildJsonLd() {
-  const locale = await getLocale();
+async function buildJsonLd(locale: string) {
   const t = await getTranslations({ locale, namespace: "metadata" });
 
   const baseUrl = env.VERCEL_URL
@@ -77,8 +76,10 @@ async function buildJsonLd() {
   };
 }
 
-export default async function HomePage() {
-  const jsonLd = await buildJsonLd();
+export default async function HomePage({ params }: PageProps<"/[locale]">) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const jsonLd = await buildJsonLd(locale);
 
   return (
     <>
