@@ -1,8 +1,15 @@
 import * as React from "react";
 
 import { LayersIcon, ArrowRightIcon } from "lucide-react";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export function LandingNav() {
+import { LanguageSwitcher } from "~/components/layout/language-switcher";
+import type { Locale } from "~/i18n/routing";
+
+export async function LandingNav() {
+  const locale = (await getLocale()) as Locale;
+  const t = await getTranslations({ locale, namespace: "nav" });
+
   return (
     <nav className="border-concrete/50 bg-cement/78 sticky top-0 z-30 border-b backdrop-blur-lg">
       <div className="mx-auto flex h-19 max-w-310 items-center justify-between px-7 max-md:px-5">
@@ -21,25 +28,26 @@ export function LandingNav() {
             href="#misja"
             className="text-ink-soft hover:text-ink text-[14.5px] font-medium no-underline transition-colors max-[880px]:hidden"
           >
-            Misja
+            {t("mission")}
           </a>
           <a
             href="#proces"
             className="text-ink-soft hover:text-ink text-[14.5px] font-medium no-underline transition-colors max-[880px]:hidden"
           >
-            Proces
+            {t("process")}
           </a>
           <a
             href="#cechy"
             className="text-ink-soft hover:text-ink text-[14.5px] font-medium no-underline transition-colors max-[880px]:hidden"
           >
-            Produkt
+            {t("product")}
           </a>
+          <LanguageSwitcher locale={locale} />
           <a
             href="#zapisy"
             className="bg-ink inline-flex items-center gap-2.5 rounded-full px-[18px] py-2.5 text-sm font-medium text-white no-underline transition-all hover:bg-[#1B1F22]"
           >
-            Dołącz do testów <ArrowRightIcon width={14} height={14} />
+            {t("cta")} <ArrowRightIcon width={14} height={14} />
           </a>
         </div>
       </div>

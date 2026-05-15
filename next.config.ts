@@ -2,8 +2,11 @@ import { type NextConfig } from "next";
 import withPlugins from "next-compose-plugins";
 
 import withBundleAnalyzer from "@next/bundle-analyzer";
+import createNextIntlPlugin from "next-intl/plugin";
 
 import { env } from "./data/env/server";
+
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const config: NextConfig = {
   reactStrictMode: true,
@@ -19,4 +22,4 @@ const config: NextConfig = {
   }
 };
 
-export default withPlugins([withBundleAnalyzer({ enabled: env.ANALYZE }), config]);
+export default withNextIntl(withPlugins([withBundleAnalyzer({ enabled: env.ANALYZE }), config]));

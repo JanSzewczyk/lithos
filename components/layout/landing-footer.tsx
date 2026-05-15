@@ -1,8 +1,11 @@
 import * as React from "react";
 
 import { LayersIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function LandingFooter() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="border-concrete mt-20 border-t py-14">
       <div className="mx-auto max-w-[1240px] px-7 max-md:px-5">
@@ -16,11 +19,9 @@ export function LandingFooter() {
             </span>
             Lithos
           </a>
-          <div className="text-ink-muted max-w-[36ch] text-sm">
-            Wędkarstwo w&nbsp;zgodzie z&nbsp;naturą. Projektowane i&nbsp;produkowane w&nbsp;Polsce.
-          </div>
+          <div className="text-ink-muted max-w-[36ch] text-sm">{t("tagline")}</div>
           <div className="text-ink-muted text-[13px]">
-            © {new Date().getFullYear()} Lithos. Wszystkie prawa zastrzeżone.
+            © {new Date().getFullYear()} Lithos. {t("rights")}
           </div>
         </div>
       </div>

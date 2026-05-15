@@ -1,11 +1,15 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
+import createMiddleware from "next-intl/middleware";
 import logger from "~/lib/logger";
 
-export function proxy(request: NextRequest) {
+import { routing } from "~/i18n/routing";
+
+const intlMiddleware = createMiddleware(routing);
+
+export default function proxy(request: NextRequest) {
   const startTime = Date.now();
   const requestId = crypto.randomUUID();
 
-  // Create a logger with request context
   const requestLogger = logger.child({
     requestId,
     method: request.method,
@@ -15,31 +19,18 @@ export function proxy(request: NextRequest) {
 
   requestLogger.info("Incoming request");
 
-  // Continue with the request
-  const response = NextResponse.next();
+  const response = intlMiddleware(request);
 
-  // Add request ID to response headers
   response.headers.set("X-Request-ID", requestId);
 
-  // Log the response
-  const duration = Date.now() - startTime;
-  requestLogger.info(
-    {
-      status: response.status,
-      duration
-    },
-    "Request completed"
-  );
+  requestLogger.info({ status: response.status, duration: Date.now() - startTime }, "Request completed");
 
   return response;
 }
 
-// Configure which routes to run proxy on
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    // Always run for API routes
     "/(api|trpc)(.*)"
   ]
 };

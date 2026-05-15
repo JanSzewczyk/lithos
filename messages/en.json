@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "title": "Lithos 3D — Naturally on the bottom. Made of concrete and passion.",
+    "description": "Innovative Method Feeder cages from reinforced concrete. Precision 3D printing, natural properties of concrete, zero lead."
+  },
+  "nav": {
+    "mission": "Mission",
+    "process": "Process",
+    "product": "Product",
+    "cta": "Join the tests"
+  },
+  "hero": {
+    "badge": "100% safe for the environment",
+    "titleLine1": "Naturally on the bottom.",
+    "titleAccentWord": "concrete",
+    "titleLine2suffix": "and passion.",
+    "subtitle": "We create innovative Method Feeder cages. We combine the precision of 3D printing with the natural properties of reinforced concrete. For your effectiveness and the cleanliness of our waters.",
+    "ctaPrimary": "I want to test it",
+    "ctaSecondary": "Learn the production process",
+    "stat0value": "0%",
+    "stat0label": "lead in the feeder composition",
+    "stat1value": "3D",
+    "stat1label": "printed matrix molds",
+    "stat2value": "PL",
+    "stat2label": "100% designed and produced",
+    "label1": "Zero lead",
+    "label2": "Stone texture",
+    "label3": "Neutral pH"
+  },
+  "anatomy": {
+    "eyebrow": "Product",
+    "title": "What exactly is",
+    "titleAccent": "Lithos?",
+    "subtitle": "This is not just another ordinary sinker. It's a thoughtful tool for Method Feeder anglers, combining natural camouflage with modern engineering.",
+    "ecoconcreteTitle": "Reinforced Eco-Concrete",
+    "ecoconcrete": "The main weight core made of non-absorbent, sinking material. Zero toxins in the water, perfect fit to the bottom.",
+    "noGlareTitle": "No Light Reflection",
+    "noGlare": "The matte, porous structure doesn't scare fish — unlike smooth, shiny plastic or lead.",
+    "wingsTitle": "3D Wings & Tabs",
+    "wings": "The precisely printed shell perfectly holds the bait during a strong cast and impact with the water.",
+    "aeroTitle": "Aerodynamic Shape",
+    "aero": "Designed in CAD software for maximum distance and accuracy, regardless of wind.",
+    "overlayTitle": "Feeder Anatomy",
+    "overlaySub": "Microfibers & FDM Printing"
+  },
+  "mission": {
+    "eyebrow": "Our mission",
+    "title": "Why did we give up ",
+    "titleAccent": "lead?",
+    "body": "Fishing is about being close to nature, yet for years we have been poisoning it with thousands of tons of lead annually. Every broken rig is a toxic trace at the bottom of a lake that stays there for hundreds of years. We decided to change this without compromising on effectiveness.",
+    "pillar0title": "Clean water",
+    "pillar0text": "Our concrete has neutral pH and releases no toxic substances. It is safe for fish and the ecosystem.",
+    "pillar1title": "New technology",
+    "pillar1text": "We use modern 3D printing to create aerodynamically perfect forms that hold bait exceptionally well.",
+    "pillar2title": "Locally made",
+    "pillar2text": "The entire design and production process takes place in Poland. You support local craft innovation."
+  },
+  "process": {
+    "eyebrow": "Production process",
+    "title": "How is",
+    "titleAccent": "Lithos made?",
+    "subtitle": "From idea to cast on the water. A combination of engineering and traditional building materials.",
+    "step0title": "CAD Design",
+    "step0desc": "We design in 3D software, taking care of every millimeter of the feeder. We test aerodynamics and tab placement.",
+    "step1title": "3D Mold Printing",
+    "step1desc": "We print precise matrix molds. 3D printing allows us details impossible to achieve with standard lead casting.",
+    "step2title": "Concrete Mix",
+    "step2desc": "We prepare a specialized concrete reinforced with microfibers. It provides resistance to water and impact against rocks.",
+    "step3title": "Curing & Testing",
+    "step3desc": "Finished feeders cure, gaining full hardness and the characteristic matte structure that camouflages them on the bottom."
+  },
+  "features": {
+    "title": "Designed\nto",
+    "titleAccent": "disappear.",
+    "body": "Lead shines and scares cautious fish. Concrete creates a natural structure that perfectly blends with the lake or river bottom. The fish only sees your bait.",
+    "check0": "The non-absorbent concrete structure doesn't change weight during fishing.",
+    "check1": "Fiber reinforcement prevents the feeder from crumbling.",
+    "check2": "Ability to choose concrete color to match the bottom type (sand / silt).",
+    "check3": "Price of traditional lead — without the ecological \"tax\"."
+  },
+  "signup": {
+    "eyebrow": "Join the tests",
+    "title": "We are creating\nthe first",
+    "titleAccent": "series.",
+    "body": "The Lithos project is in the active prototype testing phase. Leave us your email and we'll let you know when we launch. You can also take part in beta testing.",
+    "emailLabel": "Your email address",
+    "emailPlaceholder": "e.g. john@fishing.com",
+    "roleLabel": "What is your relationship with fishing?",
+    "rolePlaceholder": "Choose one option…",
+    "roleOption0": "Hobbyist",
+    "roleOption1": "Competitor",
+    "roleOption2": "I run a fishing shop",
+    "submitButton": "I want to receive launch info",
+    "successTitle": "Thank you for your interest!",
+    "successBody": "Your address is on our list. We will be in touch as soon as the water tests begin.",
+    "successReset": "Register another person",
+    "microcopy": "Your data will only be used to inform you about the Lithos project. No spam."
+  },
+  "footer": {
+    "tagline": "Fishing in harmony with nature. Designed and produced in Poland.",
+    "rights": "All rights reserved."
+  }
+}

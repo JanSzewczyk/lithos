@@ -1,47 +1,35 @@
 import * as React from "react";
 
-const STEPS = [
-  {
-    n: "01",
-    title: "Projekt CAD",
-    desc: "Projektujemy w programach 3D, dbając o każdy milimetr koszyczka. Testujemy aerodynamikę i rozmieszczenie wypustek."
-  },
-  {
-    n: "02",
-    title: "Druk 3D formy",
-    desc: "Drukujemy precyzyjne formy matrycowe. Druk 3D pozwala nam na detale, których nie da się uzyskać przy standardowych odlewach ołowianych."
-  },
-  {
-    n: "03",
-    title: "Mieszanka betonu",
-    desc: "Przygotowujemy specjalistyczny beton zbrojony mikrowłóknami. Zapewnia on odporność na wodę i uderzenia o kamienie."
-  },
-  {
-    n: "04",
-    title: "Suszenie i testy",
-    desc: "Gotowe koszyczki dojrzewają, uzyskując pełną twardość i charakterystyczną, matową strukturę kamuflującą je na dnie."
-  }
-];
+import { useTranslations } from "next-intl";
 
 export function LandingProcess() {
+  const t = useTranslations("process");
+
+  const STEPS = [
+    { n: "01", titleKey: "step0title" as const, descKey: "step0desc" as const },
+    { n: "02", titleKey: "step1title" as const, descKey: "step1desc" as const },
+    { n: "03", titleKey: "step2title" as const, descKey: "step2desc" as const },
+    { n: "04", titleKey: "step3title" as const, descKey: "step3desc" as const }
+  ];
+
   return (
-    <section className="py-24 pt-8 max-md:py-16 scroll-m-20" id="proces">
+    <section className="scroll-m-20 py-24 pt-8 max-md:py-16" id="proces">
       <div className="mx-auto max-w-310 px-7 max-md:px-5">
         <div className="mb-14 grid grid-cols-2 items-end gap-16 max-[820px]:grid-cols-1 max-[820px]:gap-6">
           <div>
-            <div className="text-ink-muted text-[13px] font-medium tracking-widest uppercase">Proces produkcji</div>
+            <div className="text-ink-muted text-[13px] font-medium tracking-widest uppercase">{t("eyebrow")}</div>
             <h2
               className="font-display mt-3.5 leading-[1.02] font-medium tracking-[-0.03em]"
               style={{ fontSize: "clamp(36px,4.6vw,64px)", fontVariationSettings: '"wdth" 92' }}
             >
-              Jak powstaje <em className="text-moss font-normal italic">Lithos?</em>
+              {t("title")} <em className="text-moss font-normal italic">{t("titleAccent")}</em>
             </h2>
           </div>
           <p
             className="text-ink-soft max-w-[44ch] justify-self-end leading-relaxed max-[820px]:justify-self-start"
             style={{ fontSize: "clamp(17px,1.4vw,20px)" }}
           >
-            Od pomysłu do rzutu na łowisku. Połączenie inżynierii i&nbsp;tradycyjnych materiałów budowlanych.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -61,9 +49,9 @@ export function LandingProcess() {
               >
                 <div className="font-display text-moss text-[13px] font-semibold tracking-widest">{step.n}</div>
                 <h3 className="font-display mt-3 mb-2.5 text-[22px] leading-tight font-medium tracking-tight">
-                  {step.title}
+                  {t(step.titleKey)}
                 </h3>
-                <p className="text-ink-soft text-[15px] leading-relaxed">{step.desc}</p>
+                <p className="text-ink-soft text-[15px] leading-relaxed">{t(step.descKey)}</p>
               </div>
             ))}
           </div>
