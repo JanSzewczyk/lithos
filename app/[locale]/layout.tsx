@@ -108,7 +108,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={bricolage.variable}>
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider messages={{ signup: messages["signup"] }}>{children}</NextIntlClientProvider>
       </body>
     </html>
   );

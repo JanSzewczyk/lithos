@@ -1,19 +1,15 @@
 import * as React from "react";
 
+import dynamic from "next/dynamic";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { env } from "~/data/env/server";
 import { routing } from "~/i18n/routing";
-import {
-  LandingAnatomy,
-  LandingFeatures,
-  LandingHero,
-  LandingMission,
-  LandingProcess,
-  LandingSignup
-} from "~/components/landing";
+import { LandingAnatomy, LandingFeatures, LandingHero, LandingMission, LandingProcess } from "~/components/landing";
 import { LandingFooter } from "~/components/layout/landing-footer";
 import { LandingNav } from "~/components/layout/landing-nav";
+
+const LandingSignup = dynamic(() => import("~/components/landing/landing-signup").then((m) => m.LandingSignup));
 
 async function buildJsonLd(locale: string) {
   const t = await getTranslations({ locale, namespace: "metadata" });
