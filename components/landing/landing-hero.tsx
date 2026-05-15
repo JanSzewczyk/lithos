@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { ArrowRightIcon } from "lucide-react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export function LandingHero() {
@@ -74,15 +75,20 @@ export function LandingHero() {
             </dl>
           </div>
 
-          <div className="stone-stage" aria-hidden="true">
-            {/*<div className="stone">*/}
-            {/*  <div className="holes">*/}
-            {/*    {Array.from({ length: 20 }).map((_, i) => (*/}
-            {/*      <span key={i} />*/}
-            {/*    ))}*/}
-            {/*  </div>*/}
-            {/*  <div className="stone-grain" />*/}
-            {/*</div>*/}
+          <div className="stone-stage mr-auto md:mr-0" aria-hidden="true">
+            <Image
+              src="/img/feeder-project.png"
+              fill
+              alt="Lithos FE.02 — ekologiczny koszyczek Method Feeder z betonu i druku 3D"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '3rem',
+                boxShadow: '0 50px 80px -30px rgba(44,48,51,0.32)',
+              }}
+              priority
+            />
             <div className="float-label fl-1">
               <span className="dot" />
               {t("label1")}

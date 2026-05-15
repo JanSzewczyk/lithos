@@ -30,16 +30,6 @@
 
 /* ── Stone visual ─────────────────────────────────────────── */
 
-@keyframes lithos-morph {
-  0%,
-  100% {
-    border-radius: 64% 36% 58% 42% / 52% 44% 56% 48%;
-  }
-  50% {
-    border-radius: 52% 48% 62% 38% / 58% 42% 50% 50%;
-  }
-}
-
 @keyframes lithos-float {
   0%,
   100% {
@@ -56,87 +46,6 @@
   width: 100%;
   max-width: 540px;
   margin-left: auto;
-}
-
-.stone {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(at 32% 28%, rgba(255, 255, 255, 0.85), transparent 40%),
-    radial-gradient(at 70% 78%, rgba(44, 48, 51, 0.18), transparent 45%),
-    linear-gradient(150deg, #e7e6e2 0%, #c9c8c2 55%, #a8a7a1 100%);
-  border-radius: 64% 36% 58% 42% / 52% 44% 56% 48%;
-  box-shadow:
-    inset 18px 28px 48px rgba(255, 255, 255, 0.45),
-    inset -22px -32px 60px rgba(44, 48, 51, 0.18),
-    0 50px 80px -30px rgba(44, 48, 51, 0.32);
-  animation: lithos-morph 16s ease-in-out infinite;
-  transform: translateZ(0);
-}
-
-.stone::before,
-.stone::after {
-  content: "";
-  position: absolute;
-  border-radius: 999px;
-  background: rgba(44, 48, 51, 0.07);
-  mix-blend-mode: multiply;
-}
-
-.stone::before {
-  width: 14%;
-  height: 8%;
-  top: 38%;
-  left: 26%;
-  filter: blur(2px);
-}
-
-.stone::after {
-  width: 9%;
-  height: 6%;
-  top: 62%;
-  left: 58%;
-  filter: blur(3px);
-  transform: rotate(-12deg);
-}
-
-.stone-grain {
-  position: absolute;
-  inset: 0;
-  border-radius: 64% 36% 58% 42% / 52% 44% 56% 48%;
-  background-image: radial-gradient(rgba(44, 48, 51, 0.16) 1px, transparent 1.4px);
-  background-size: 4px 4px;
-  opacity: 0.22;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
-.holes {
-  position: absolute;
-  inset: 18%;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 6%;
-  pointer-events: none;
-  transform: rotate(-8deg);
-  opacity: 0.55;
-}
-
-.holes span {
-  background: radial-gradient(circle at 30% 30%, rgba(44, 48, 51, 0.55), rgba(44, 48, 51, 0.25));
-  border-radius: 999px;
-  box-shadow:
-    inset 0 0 4px rgba(0, 0, 0, 0.4),
-    0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.holes span:nth-child(3n) {
-  opacity: 0.6;
-}
-
-.holes span:nth-child(5n) {
-  opacity: 0.4;
 }
 
 .float-label {
@@ -375,9 +284,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stone {
-    animation: none;
-  }
   .float-label {
     animation: none;
   }
