@@ -10,7 +10,8 @@ import { LandingFooter } from "./landing-footer";
 const MESSAGES = {
   footer: {
     tagline: "Fishing in harmony with nature. Designed and produced in Poland.",
-    rights: "All rights reserved."
+    rights: "All rights reserved.",
+    footerAriaLabel: "Page footer"
   }
 };
 
