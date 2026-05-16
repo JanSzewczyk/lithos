@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export function LandingAnatomy() {
@@ -48,13 +49,19 @@ export function LandingAnatomy() {
               boxShadow: "inset 0 0 60px rgba(44,48,51,0.12),0 40px 80px -30px rgba(44,48,51,0.22)"
             }}
           >
-            <div className="anatomy-visual-bg absolute inset-0">
-              <div className="anatomy-holes">
-                {Array.from({ length: 12 }).map((_, i) => (
-                  <span key={i} />
-                ))}
-              </div>
-            </div>
+            <Image
+              src="/img/feeder-construction.png"
+              fill
+              alt=""
+              sizes="(max-width: 980px) 100vw, 38vw"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "3rem",
+                boxShadow: "0 50px 80px -30px rgba(44,48,51,0.32)"
+              }}
+            />
             <div
               className="absolute right-0 bottom-0 left-0 px-8 pt-10 pb-8 text-center"
               style={{ background: "linear-gradient(to top,rgba(0,0,0,0.52),transparent)" }}

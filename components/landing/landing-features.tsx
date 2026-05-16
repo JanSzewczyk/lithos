@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { CheckIcon } from "lucide-react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export function LandingFeatures() {
@@ -56,9 +57,19 @@ export function LandingFeatures() {
             </div>
 
             <div className="relative aspect-square" aria-hidden="true">
-              <div className="mini-stone ms1" />
-              <div className="mini-stone ms2" />
-              <div className="mini-stone ms3" />
+              <Image
+                src="/img/feeder-presentation.png"
+                fill
+                alt="Lithos FE.02 — ekologiczny koszyczek Method Feeder z betonu i druku 3D"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "3rem",
+                  boxShadow: "0 50px 80px -30px rgba(44,48,51,0.32)"
+                }}
+                priority
+              />{" "}
             </div>
           </div>
         </div>
