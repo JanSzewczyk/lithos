@@ -75,17 +75,18 @@ export function LandingHero() {
             </dl>
           </div>
 
-          <div className="stone-stage mr-auto md:mr-0" aria-hidden="true">
+          <div className="stone-stage mx-auto" aria-hidden="true">
             <Image
               src="/img/feeder-project.png"
               fill
-              alt="Lithos FE.02 — ekologiczny koszyczek Method Feeder z betonu i druku 3D"
+              alt=""
+              sizes="(max-width: 1020px) 100vw, 540px"
               style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                borderRadius: '3rem',
-                boxShadow: '0 50px 80px -30px rgba(44,48,51,0.32)',
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "3rem",
+                boxShadow: "0 50px 80px -30px rgba(44,48,51,0.32)"
               }}
               priority
             />
