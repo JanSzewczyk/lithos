@@ -12,7 +12,16 @@ const meta = preview.meta({
   component: LanguageSwitcher,
   decorators: [
     (Story) => (
-      <NextIntlClientProvider locale="en" messages={{}}>
+      <NextIntlClientProvider
+        locale="en"
+        messages={{
+          nav: {
+            languageSwitcherLabel: "Language selection",
+            switchToPolish: "Switch to Polish",
+            switchToEnglish: "Switch to English"
+          }
+        }}
+      >
         <Story />
       </NextIntlClientProvider>
     )
@@ -27,13 +36,13 @@ export const PolishActive = meta.story({
 });
 
 PolishActive.test("Renders both language links", async ({ canvas }) => {
-  await expect(canvas.getByRole("link", { name: "PL" })).toBeVisible();
-  await expect(canvas.getByRole("link", { name: "EN" })).toBeVisible();
+  await expect(canvas.getByRole("link", { name: /switch to polish/i })).toBeVisible();
+  await expect(canvas.getByRole("link", { name: /switch to english/i })).toBeVisible();
 });
 
 PolishActive.test("PL link is styled as active, EN link is styled as muted", async ({ canvas }) => {
-  const plLink = canvas.getByRole("link", { name: "PL" });
-  const enLink = canvas.getByRole("link", { name: "EN" });
+  const plLink = canvas.getByRole("link", { name: /switch to polish/i });
+  const enLink = canvas.getByRole("link", { name: /switch to english/i });
   await expect(plLink).toHaveClass("text-ink");
   await expect(enLink).toHaveClass("text-ink-muted");
 });
@@ -43,13 +52,13 @@ export const EnglishActive = meta.story({
 });
 
 EnglishActive.test("Renders both language links", async ({ canvas }) => {
-  await expect(canvas.getByRole("link", { name: "PL" })).toBeVisible();
-  await expect(canvas.getByRole("link", { name: "EN" })).toBeVisible();
+  await expect(canvas.getByRole("link", { name: /switch to polish/i })).toBeVisible();
+  await expect(canvas.getByRole("link", { name: /switch to english/i })).toBeVisible();
 });
 
 EnglishActive.test("EN link is styled as active, PL link is styled as muted", async ({ canvas }) => {
-  const plLink = canvas.getByRole("link", { name: "PL" });
-  const enLink = canvas.getByRole("link", { name: "EN" });
+  const plLink = canvas.getByRole("link", { name: /switch to polish/i });
+  const enLink = canvas.getByRole("link", { name: /switch to english/i });
   await expect(enLink).toHaveClass("text-ink");
   await expect(plLink).toHaveClass("text-ink-muted");
 });
