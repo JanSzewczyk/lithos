@@ -60,7 +60,8 @@ export function LandingFeatures() {
               <Image
                 src="/img/feeder-presentation.png"
                 fill
-                alt="Lithos FE.02 — ekologiczny koszyczek Method Feeder z betonu i druku 3D"
+                alt=""
+                sizes="(max-width: 900px) 100vw, 45vw"
                 style={{
                   width: "100%",
                   height: "100%",
@@ -68,7 +69,6 @@ export function LandingFeatures() {
                   borderRadius: "3rem",
                   boxShadow: "0 50px 80px -30px rgba(44,48,51,0.32)"
                 }}
-                priority
               />{" "}
             </div>
           </div>
