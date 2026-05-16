@@ -75,11 +75,11 @@ export function LandingHero() {
             </dl>
           </div>
 
-          <div className="stone-stage mx-auto" aria-hidden="true">
+          <div className="stone-stage mx-auto">
             <Image
               src="/img/feeder-project.png"
               fill
-              alt=""
+              alt="Koszyczek Method Feeder Lithos — zbrojony beton z otworami aerodynamicznymi i naturalną teksturą kamienia"
               sizes="(max-width: 1020px) 100vw, 540px"
               style={{
                 width: "100%",
@@ -90,15 +90,15 @@ export function LandingHero() {
               }}
               priority
             />
-            <div className="float-label fl-1">
+            <div className="float-label fl-1" aria-hidden="true">
               <span className="dot" />
               {t("label1")}
             </div>
-            <div className="float-label fl-2">
+            <div className="float-label fl-2" aria-hidden="true">
               <span className="dot" style={{ background: "#9B8B6E" }} />
               {t("label2")}
             </div>
-            <div className="float-label fl-3">
+            <div className="float-label fl-3" aria-hidden="true">
               <span className="dot" style={{ background: "#5F8463" }} />
               {t("label3")}
             </div>

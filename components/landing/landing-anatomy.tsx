@@ -43,7 +43,6 @@ export function LandingAnatomy() {
 
           <div
             className="relative overflow-hidden rounded-[3rem] opacity-[0.92] transition-opacity duration-500 hover:opacity-100"
-            aria-hidden="true"
             style={{
               aspectRatio: "4/5",
               boxShadow: "inset 0 0 60px rgba(44,48,51,0.12),0 40px 80px -30px rgba(44,48,51,0.22)"
@@ -52,7 +51,7 @@ export function LandingAnatomy() {
             <Image
               src="/img/feeder-construction.png"
               fill
-              alt=""
+              alt="Przekrój koszyczka Lithos — widoczna konstrukcja z zbrojonego betonu, otwory i skrzydła trzymające zanętę"
               sizes="(max-width: 980px) 100vw, 38vw"
               style={{
                 width: "100%",
