@@ -56,11 +56,11 @@ export function LandingFeatures() {
               </ul>
             </div>
 
-            <div className="relative aspect-square" aria-hidden="true">
+            <div className="relative aspect-square">
               <Image
                 src="/img/feeder-presentation.png"
                 fill
-                alt=""
+                alt="Koszyczek Lithos na dnie jeziora — matowa betonowa struktura wtapiająca się w naturalne środowisko"
                 sizes="(max-width: 900px) 100vw, 45vw"
                 style={{
                   width: "100%",
