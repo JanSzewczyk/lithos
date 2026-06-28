@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code 📚
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up Node.js 🟢
         uses: actions/setup-node@v6
         with:
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code 📚
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up Node.js 🟢
         uses: actions/setup-node@v6
         with:
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code 📚
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up Node.js 🟢
         uses: actions/setup-node@v6
         with:
@@ -67,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code 📚
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up Node 🟢
         uses: actions/setup-node@v6
         with:
@@ -91,7 +91,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code 📚
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up Node.js 🟢
         uses: actions/setup-node@v6
         with:
@@ -110,7 +110,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout code 📚
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up Node.js 🟢
         uses: actions/setup-node@v6
         with:
@@ -136,7 +136,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout code 📚
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up Node.js 🟢
         uses: actions/setup-node@v6
         with:
@@ -145,7 +145,7 @@ jobs:
       - name: Install packages ⚙️
         run: npm ci
       - name: Cache Playwright Browsers
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
@@ -206,7 +206,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout code 📚
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up Node.js 🟢
         uses: actions/setup-node@v6
         with:
@@ -235,7 +235,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout code 📚
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Dependency Review
         uses: actions/dependency-review-action@v5
         with:
